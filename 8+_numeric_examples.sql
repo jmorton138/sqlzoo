@@ -68,7 +68,12 @@ SELECT subject, ROUND(SUM(A_STRONGLY_AGREE*response)/SUM(response))
 
 -- The column score is a percentage - you must use the method outlined above to multiply the percentage by the response and divide by the total response. Give your answer rounded to the nearest whole number.
 
-
+SELECT institution, ROUND(SUM(score*response)/SUM(response))
+  FROM nss
+ WHERE question='Q22'
+   AND (institution LIKE '%Manchester%')
+GROUP BY institution
+ORDER BY institution
 
 -- Number of Computing Students in Manchester
 -- 8.
